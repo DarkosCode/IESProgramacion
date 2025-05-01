@@ -38,34 +38,96 @@ public class practicoN1 {
         // }
 
         // ? Pedir tres números y mostrarlos ordenados de mayor a menor.
-        System.out.println("Introduce el primer numero a comparar: ");
-        int numero1 = entradaTeclado.nextInt();
-        System.out.println("Introduce el segundo numero a comparar: ");
-        int numero2 = entradaTeclado.nextInt();
-        System.out.println("Introduce el tercer numero a comparar: ");
-        int numero3 = entradaTeclado.nextInt();
+        // System.out.println("Introduce el primer numero a comparar: ");
+        // int numero1 = entradaTeclado.nextInt();
+        // System.out.println("Introduce el segundo numero a comparar: ");
+        // int numero2 = entradaTeclado.nextInt();
+        // System.out.println("Introduce el tercer numero a comparar: ");
+        // int numero3 = entradaTeclado.nextInt();
 
-        if (numero1 >= numero3 && numero2 >= numero3) {
-            if (numero1 >= numero2) {
-                System.out.println(numero1 + " " + numero2 + " " + numero3);
-            } else {
-                System.out.println(numero2 + " " + numero1 + " " + numero3);
+        // if (numero1 >= numero3 && numero2 >= numero3) {
+        // if (numero1 >= numero2) {
+        // System.out.println(numero1 + " " + numero2 + " " + numero3);
+        // } else {
+        // System.out.println(numero2 + " " + numero1 + " " + numero3);
+        // }
+        // } else if (numero1 >= numero2 && numero3 >= numero2) {
+        // if (numero1 >= numero3) {
+        // System.out.println(numero1 + " " + numero3 + " " + numero2);
+        // } else {
+        // System.out.println(numero3 + " " + numero1 + " " + numero2);
+        // }
+        // } else if (numero2 >= numero1 && numero3 >= numero1) {
+        // if (numero2 >= numero3) {
+        // System.out.println(numero2 + " " + numero3 + " " + numero1);
+        // } else {
+        // System.out.println(numero3 + " " + numero2 + " " + numero1);
+        // }
+        // }
+
+        // ? Pedir un número entre 0 y 9.999 y decir cuantas cifras tiene, sin String
+        // System.out.println("Introduce un numero entre 0 y 9999999999 para contar sus
+        // cifras: ");
+        // // maximo 10 cifras que es lo que soporta int
+        // int numero = entradaTeclado.nextInt();
+        // int copiaParaContar = numero;
+        // int contador = 0;
+
+        // if (numero == 0) {
+        // System.out.println("El numero " + numero + " tiene " + contador + " cifras");
+        // } else if (numero > 0) {
+        // while (copiaParaContar != 0) {
+        // contador++;
+        // copiaParaContar /= 10;
+        // }
+        // System.out.println("El numero " + numero + " tiene " + contador + " cifras");
+        // }
+
+        /*
+         * metodo de contar las cifras con string
+         * int numero = 12345;
+         * String numeroStr = String.valueOf(numero);
+         * int cantidadCifras = numeroStr.length();
+         * System.out.println("El número " + numero + " tiene " + cantidadCifras +
+         * " cifras.");
+         */
+
+        // ? Pedir un número entre 0 y 9.999 y mostrarlo con las cifras al revés.
+        System.out.println("Introduce un numero entre 0 y 99999 para mostrarlo al reves: ");
+        int numeroOriginal = entradaTeclado.nextInt();
+        if (numeroOriginal <= 99999) {
+            int numero = numeroOriginal;
+            int numeroRevertido = 0;
+
+            while (numero > 0) {
+                // Obtener la última cifra del número
+                int ultimaCifra = numero % 10;
+                // 245 -> 24.5 -> el resto es 5
+                // 24 -> resto 4
+                // 2 -> resto 2
+
+                // Agregar la última cifra al número revertido, multiplicándolo por 10 para
+                // "desplazar" las cifras anteriores
+                numeroRevertido = numeroRevertido * 10 + ultimaCifra;
+                // 0 * 10 + 5 = 5
+                // 5 * 10 + 4 = 54
+                // 54 * 10 + 2 = 542
+
+                // Eliminar la última cifra del número original dividiéndolo por 10
+                numero /= 10;
+                // 245 /10 = 24
+                // 24 /10 = 2
+                // 2 /10 = 0 -> se corta el while
             }
-        } else if (numero1 >= numero2 && numero3 >= numero2) {
-            if (numero1 >= numero3) {
-                System.out.println(numero1 + " " + numero3 + " " + numero2);
-            } else {
-                System.out.println(numero3 + " " + numero1 + " " + numero2);
-            }
-        } else if (numero2 >= numero1 && numero3 >= numero1) {
-            if (numero2 >= numero3) {
-                System.out.println(numero2 + " " + numero3 + " " + numero1);
-            } else {
-                System.out.println(numero3 + " " + numero2 + " " + numero1);
-            }
+
+            System.out.println("El número original es: " + numeroOriginal);
+            System.out.println("El número invertido es: " + numeroRevertido);
+        } else {
+            System.out.println("El numero no esta entre 0 y 99999");
         }
-        // else if (numero1 == numero2 || numero1 == numero3 || numero2 == numero3) {}
 
+        // ? Pedir el día, mes y año de una fecha correcta y mostrar la fecha del día
+        // ? siguiente. suponer que todos los meses tienen 30 días
     }
 
 }
