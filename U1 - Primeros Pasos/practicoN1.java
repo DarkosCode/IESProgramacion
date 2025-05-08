@@ -12,15 +12,15 @@ public class practicoN1 {
         // System.out.println("El radio del circulo es: " + calculadorDeArea);
 
         // ? Pedir un número e indicar si es positivo o negativo.
-        // System.out.println("Introduce el numero para verificar su signo: ");
-        // int numero = entradaTeclado.nextInt();
-        // if (numero < 0) {
-        // System.out.println("El numero " + numero + " es negativo");
-        // } else if (numero > 0) {
-        // System.out.println("El numero " + numero + " es positivo");
-        // } else {
-        // System.out.println("El numero " + numero + " es de valor neutro");
-        // }
+        System.out.println("Introduce el numero para verificar su signo: ");
+        int numero = entradaTeclado.nextInt();
+        if (numero < 0) {
+            System.out.println("El numero " + numero + " es negativo");
+        } else if (numero > 0) {
+            System.out.println("El numero " + numero + " es positivo");
+        } else {
+            System.out.println("El numero " + numero + " es de valor neutro");
+        }
 
         // ? Pedir dos números y decir cual es el mayor o si son iguales.
         // System.out.println("Introduce el primer numero a comparar: ");
@@ -129,36 +129,39 @@ public class practicoN1 {
 
         // ? Pedir el día, mes y año de una fecha correcta y mostrar la fecha del día
         // ? siguiente. suponer que todos los meses tienen 30 días
-        System.out.println("Introduce el año");
-        int año = entradaTeclado.nextInt();
+        // System.out.println("Introduce el año");
+        // int año = entradaTeclado.nextInt();
 
-        System.out.println("Introduce el numero de mes");
-        int mes = entradaTeclado.nextInt();
+        // System.out.println("Introduce el numero de mes");
+        // int mes = entradaTeclado.nextInt();
 
-        System.out.println("Introduce el numero de dia");
-        int dia = entradaTeclado.nextInt();
+        // System.out.println("Introduce el numero de dia");
+        // int dia = entradaTeclado.nextInt();
 
-        if (dia <= 29) {
-            int siguiente = dia + 1;
-            System.out.println("La fecha del dia siguiente al indicado es; el dia " + siguiente + " del mes " + mes
-                    + " del año " + año);
-        } else if (dia == 30) {
-            if (mes != 12) {
-                dia = 1;
-                mes = mes + 1;
-                System.out.println("La fecha del dia siguiente al indicado es; el dia " + dia + " del mes " + mes
-                        + " del año " + año);
+        // if (dia <= 29) {
+        // int siguiente = dia + 1;
+        // System.out.println("La fecha del dia siguiente al indicado es; el dia " +
+        // siguiente + " del mes " + mes
+        // + " del año " + año);
+        // } else if (dia == 30) {
+        // if (mes != 12) {
+        // dia = 1;
+        // mes = mes + 1;
+        // System.out.println("La fecha del dia siguiente al indicado es; el dia " + dia
+        // + " del mes " + mes
+        // + " del año " + año);
 
-            } else if (mes == 12) {
-                dia = 1;
-                mes = 1;
-                año = año + 1;
-                System.out.println("La fecha del dia siguiente al indicado es; el dia " + dia + " del mes " + mes
-                        + " del año " + año);
-            }
-        } else if (dia >= 31) {
-            System.out.println("No existen fechas con meses mayores a 30 dias");
-        }
+        // } else if (mes == 12) {
+        // dia = 1;
+        // mes = 1;
+        // año = año + 1;
+        // System.out.println("La fecha del dia siguiente al indicado es; el dia " + dia
+        // + " del mes " + mes
+        // + " del año " + año);
+        // }
+        // } else if (dia >= 31) {
+        // System.out.println("No existen fechas con meses mayores a 30 dias");
+        // }
 
     }
 
