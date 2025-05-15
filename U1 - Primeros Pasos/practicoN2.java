@@ -1,7 +1,8 @@
 public class practicoN2 {
     public static void main(String[] arg) {
 
-        // ? Correr este programa y ver y mostrar que hace
+        // ? Correr estos programas, ver y mostrar que hacen
+        // !
         for (int i = 2; i <= 50; i++) {
             boolean esPrimo = true;
             // System.out.println(i);
@@ -17,6 +18,14 @@ public class practicoN2 {
             }
         }
 
+        // !
+        int suma = 0;
+        for (int i = 1; i <= 100; i++) {
+            if (i % 3 == 0 || i % 5 == 0) {
+                suma += i;
+            }
+        }
+        System.out.println(suma);
     }
 
 }
