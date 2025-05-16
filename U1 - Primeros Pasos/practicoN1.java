@@ -12,15 +12,15 @@ public class practicoN1 {
         // System.out.println("El radio del circulo es: " + calculadorDeArea);
 
         // ? Pedir un número e indicar si es positivo o negativo.
-        System.out.println("Introduce el numero para verificar su signo: ");
-        int numero = entradaTeclado.nextInt();
-        if (numero < 0) {
-            System.out.println("El numero " + numero + " es negativo");
-        } else if (numero > 0) {
-            System.out.println("El numero " + numero + " es positivo");
-        } else {
-            System.out.println("El numero " + numero + " es de valor neutro");
-        }
+        // System.out.println("Introduce el numero para verificar su signo: ");
+        // int numero = entradaTeclado.nextInt();
+        // if (numero < 0) {
+        // System.out.println("El numero " + numero + " es negativo");
+        // } else if (numero > 0) {
+        // System.out.println("El numero " + numero + " es positivo");
+        // } else {
+        // System.out.println("El numero " + numero + " es de valor neutro");
+        // }
 
         // ? Pedir dos números y decir cual es el mayor o si son iguales.
         // System.out.println("Introduce el primer numero a comparar: ");
@@ -93,39 +93,38 @@ public class practicoN1 {
          */
 
         // ? Pedir un número entre 0 y 9.999 y mostrarlo con las cifras al revés.
-        // System.out.println("Introduce un numero entre 0 y 99999 para mostrarlo al
-        // reves: ");
-        // int numeroOriginal = entradaTeclado.nextInt();
-        // if (numeroOriginal <= 99999) {
-        // int numero = numeroOriginal;
-        // int numeroRevertido = 0;
+        System.out.println("Introduce un numero entre 0 y 99999 para mostrarlo al reves: ");
+        int numeroOriginal = entradaTeclado.nextInt();
+        if (numeroOriginal <= 99999) {
+            int numero = numeroOriginal;
+            int numeroRevertido = 0;
 
-        // while (numero > 0) {
-        // // Obtener la última cifra del número
-        // int ultimaCifra = numero % 10;
-        // // 245 -> 24.5 -> el resto es 5
-        // // 24 -> resto 4
-        // // 2 -> resto 2
+            while (numero > 0) {
+                // Obtener la última cifra del número
+                int ultimaCifra = numero % 10;
+                // 245 -> 24.5 -> el resto es 5
+                // 24 -> resto 4
+                // 2 -> resto 2
 
-        // // Agregar la última cifra al número revertido, multiplicándolo por 10 para
-        // // "desplazar" las cifras anteriores
-        // numeroRevertido = numeroRevertido * 10 + ultimaCifra;
-        // // 0 * 10 + 5 = 5
-        // // 5 * 10 + 4 = 54
-        // // 54 * 10 + 2 = 542
+                // Agregar la última cifra al número revertido, multiplicándolo por 10 para
+                // "desplazar" las cifras anteriores
+                numeroRevertido = numeroRevertido * 10 + ultimaCifra;
+                // 0 * 10 + 5 = 5
+                // 5 * 10 + 4 = 54
+                // 54 * 10 + 2 = 542
 
-        // // Eliminar la última cifra del número original dividiéndolo por 10
-        // numero /= 10;
-        // // 245 /10 = 24
-        // // 24 /10 = 2
-        // // 2 /10 = 0 -> se corta el while
-        // }
+                // Eliminar la última cifra del número original dividiéndolo por 10
+                numero /= 10;
+                // 245 /10 = 24
+                // 24 /10 = 2
+                // 2 /10 = 0 -> se corta el while
+            }
 
-        // System.out.println("El número original es: " + numeroOriginal);
-        // System.out.println("El número invertido es: " + numeroRevertido);
-        // } else {
-        // System.out.println("El numero no esta entre 0 y 99999");
-        // }
+            System.out.println("El número original es: " + numeroOriginal);
+            System.out.println("El número invertido es: " + numeroRevertido);
+        } else {
+            System.out.println("El numero no esta entre 0 y 99999");
+        }
 
         // ? Pedir el día, mes y año de una fecha correcta y mostrar la fecha del día
         // ? siguiente. suponer que todos los meses tienen 30 días
