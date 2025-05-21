@@ -47,28 +47,56 @@ public class practicoN3 {
         // ? Ej 4 - Ecuacion de segundo grado
         // * x=2a−b±b2−4ac​
 
-        System.out.println("Ingresar el coeficiente a: ");
-        double a = teclado.nextDouble();
-        System.out.println("Ingresar el coeficiente b: ");
-        double b = teclado.nextDouble();
-        System.out.println("Ingresar el coeficiente c: ");
-        double c = teclado.nextDouble();
+        // System.out.println("Ingresar el coeficiente a: ");
+        // double a = teclado.nextDouble();
+        // System.out.println("Ingresar el coeficiente b: ");
+        // double b = teclado.nextDouble();
+        // System.out.println("Ingresar el coeficiente c: ");
+        // double c = teclado.nextDouble();
 
-        double divisor = 2 * a;
-        double raiz = Math.sqrt((Math.pow(b, 2)) - (4 * a * c));
+        // double divisor = 2 * a;
+        // double raiz = Math.sqrt((Math.pow(b, 2)) - (4 * a * c));
 
-        double raicesPositivas = (-b + raiz) / divisor;
-        double raicesNegativas = (-b - raiz) / divisor;
+        // double raicesPositivas = (-b + raiz) / divisor;
+        // double raicesNegativas = (-b - raiz) / divisor;
 
-        if (raiz >= 0) {
-            System.out.println("El primer resultado (+) es: " + df.format(raicesPositivas)
-                    + ". Y el segundo resultado (-) es: " + df.format(raicesNegativas));
-        } else {
-            System.out.println("La raiz con los cocientes es inexistente debido a que es negativa");
-        }
+        // if (raiz >= 0) {
+        // System.out.println("El primer resultado (+) es: " +
+        // df.format(raicesPositivas)
+        // + ". Y el segundo resultado (-) es: " + df.format(raicesNegativas));
+        // } else {
+        // System.out.println("La raiz con los cocientes es inexistente debido a que es
+        // negativa");
+        // }
 
-        // ? Ej 5 -
+        // ? Ej 5 - Simulacion de Dados
+        /// * Simulá el lanzamiento de dos dados utilizando Math.random(), y mostrá el
+        // resultado de ambos lanzamientos y su suma. Simulá 1000 lanzamientos y contá
+        // cuántas veces se obtiene cada posible suma (entre 2 y 12).
 
+        // int dado1;
+        // int dado2;
+        // int rango = (12 - 2) + 1;
+        // int i;
+
+        // for (i = 0; i < 20; i++) {
+        // dado1 = (int) (Math.random() * rango) + 2;
+        // dado2 = (int) (Math.random() * rango) + 2;
+        // System.out.println("Los dados tirados dieron " + dado1 + " y " + dado2);
+        // }
+
+        // System.out.println("Los dados se tiraron " + i + " veces.");
+        // System.out.println(Math.random());
+
+        // ? Ej 6 - Hipotenusa de un triangulo
+        // * */ a² + b² = c²
+        System.out.println("Ingresar el primer cateto (a): ");
+        double cateto1 = teclado.nextDouble();
+        System.out.println("Ingresar el segundo cateto (b): ");
+        double cateto2 = teclado.nextDouble();
+        double pitagoras = Math.pow(cateto1, 2) + Math.pow(cateto2, 2);
+        double Hipotenusa = Math.sqrt(pitagoras);
+        System.out.println("La hipotenusa del triangulo rectangulo es: " + Hipotenusa);
     }
 
 }
