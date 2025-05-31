@@ -1,6 +1,6 @@
 import javax.swing.JOptionPane;
 
-public class PPTpracticoN4 {
+public class PiePapTijera {
     public static void main(String[] a) {
 
         // ? PIEDRA PAPEL O TIJERA
