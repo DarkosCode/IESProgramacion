@@ -117,30 +117,41 @@ public class practicoN4 {
 
         // ? 9. Ingresar una dirección de correo y verificar que la longitud no supere
         // ? los 12 caracteres. Tenga un @ y termine en . Com
-        System.out.println();
-        System.out.println("9 - INGRESAR UNA DIRECCION DE CORREO Y VERIFICAR: (<12), @ y .Com");
-        System.out.println("Ingresar una direccion de correo electronico: ");
-        String correo = entradaTeclado.nextLine();
+        // System.out.println();
+        // System.out.println("9 - INGRESAR UNA DIRECCION DE CORREO Y VERIFICAR: (<12),
+        // @ y .Com");
+        // System.out.println("Ingresar una direccion de correo electronico: ");
+        // String correo = entradaTeclado.nextLine();
 
-        String correoHastaArroba = correo.trim().substring(0, correo.indexOf("@"));
-        // System.out.println(correoHastaArroba);
-        // System.out.println(correo.trim().length());
-        // System.out.println(correo.indexOf("l"));
-        // System.out.println(correo.charAt((correo.length() - 5)));
+        // String correoHastaArroba = correo.trim().substring(0, correo.indexOf("@"));
 
-        if (correoHastaArroba.length() <= 12 && correo.contains("@") && correo.contains(".com")) {
-            System.out.println("El correo: " + correo + " es valido");
-        } else {
-            System.out
-                    .println("El correo: " + correo
-                            + " no tiene @, tiene mas de 12 caracteres o no termina con \".com\"");
-        }
+        // if (correoHastaArroba.length() <= 12 && correo.contains("@") &&
+        // correo.contains(".com")) {
+        // System.out.println("El correo: " + correo + " es valido");
+        // } else {
+        // System.out
+        // .println("El correo: " + correo
+        // + " no tiene @, tiene mas de 12 caracteres o no termina con \".com\"");
+        // }
 
         // ? 10. El usuario ingresa una cadena hasta verificar que tenga longitud mayor
         // ? que 8 y la primera letra comience en mayúscula, en este caso mostrará el
-        // ? mensaje "cadena correcta".
-        // ? Si no cumple alguna de las condiciones mostrará el mensaje "cadena
-        // ? incorrecta, vuelva a ingresar".
+        // ? mensaje "cadena correcta". Si no cumple alguna de las condiciones mostrará
+        // ? el mensaje "cadena incorrecta, vuelva a ingresar".
+        System.out.println();
+        System.out.println("10 - INGRESAR UN STRING Y VERIFICAR >8 Y PRIMER LETRA MAYUSCULA");
+        System.out.println("Ingresar un string: ");
+        String stringConCondiciones = entradaTeclado.nextLine();
+        if (stringConCondiciones.trim().length() > 8) {
+            String stringTrimeado = stringConCondiciones.trim();
+            if (stringTrimeado.charAt(0) == stringTrimeado.toUpperCase().charAt(0)) {
+                System.out.println("La cadena: \"" + stringConCondiciones.trim() + "\" es correcta.");
+            } else {
+                System.out.println("La cadena no empieza con mayuscula.");
+            }
+        } else {
+            System.out.println("La cadena tiene una longitud mayor a 8 caracteres.");
+        }
 
     }
 }
