@@ -121,12 +121,20 @@ public class practicoN4 {
         System.out.println("9 - INGRESAR UNA DIRECCION DE CORREO Y VERIFICAR: (<12), @ y .Com");
         System.out.println("Ingresar una direccion de correo electronico: ");
         String correo = entradaTeclado.nextLine();
-        System.out.println(correo.length());
-        System.out.println(correo.indexOf("l"));
-        System.out.println(correo.charAt((correo.length() - 5)));
 
-        // if (correo.length() > 12 && correo.contains("@") && correo.trim().length - )
-        // {
+        String correoHastaArroba = correo.trim().substring(0, correo.indexOf("@"));
+        // System.out.println(correoHastaArroba);
+        // System.out.println(correo.trim().length());
+        // System.out.println(correo.indexOf("l"));
+        // System.out.println(correo.charAt((correo.length() - 5)));
+
+        if (correoHastaArroba.length() <= 12 && correo.contains("@") && correo.contains(".com")) {
+            System.out.println("El correo: " + correo + " es valido");
+        } else {
+            System.out
+                    .println("El correo: " + correo
+                            + " no tiene @, tiene mas de 12 caracteres o no termina con \".com\"");
+        }
 
         // ? 10. El usuario ingresa una cadena hasta verificar que tenga longitud mayor
         // ? que 8 y la primera letra comience en mayúscula, en este caso mostrará el
