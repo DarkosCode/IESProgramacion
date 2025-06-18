@@ -1,6 +1,6 @@
 
 // ! Siempre es buena practica importar las clases con sus metodos al principio del codigo
-// Sin sintaxis, simplemente lenguaje coloquial-instrucciones
+
 public class Ejercicios {
     public static void main(String[] args) {
         // ! EjercicioParImpar
