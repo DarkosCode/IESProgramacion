@@ -5,6 +5,10 @@ ventana = tk.Tk()
 ventana.geometry("1000x800")
 ventana.title("Agenda")
 
+# Ajuste de estilo: evitar solapamiento de filas en Treeview
+style = ttk.Style()
+style.configure('Treeview', rowheight=32)
+
 # etiqueta = tk.Label(ventana, text="Agenda de contactos")
 # etiqueta.pack()
 
@@ -22,18 +26,22 @@ TreeAgenda.heading('Telefono', text='Telefono')
 
 # Columnas: ancho y alineación del contenido
 TreeAgenda.column('ID', width=60, anchor='center', stretch=False)     # no estira
-TreeAgenda.column('Nombre', width=220, anchor='w', stretch=True)      # estira
-TreeAgenda.column('Telefono', width=140, anchor='center', stretch=False)
+TreeAgenda.column('Nombre', width=120, anchor='w', stretch=True)      # estira
+TreeAgenda.column('Telefono', width=190, anchor='center', stretch=True)
 
 ## Funcion de añadir contacto
 contactos = []
 def añadirContacto():
-    
+
     nombre = input_Nombre.get()
     telefono = input_Telefono.get()
-    idUsuario = len(contactos)+1 #autoincremental
+    if len(telefono) != 10:
+        from tkinter import messagebox
+        messagebox.showerror("Error", "El N° debe tener 10 dígitos")
+        return
+    idUsuario = len(contactos) + 1  # autoincremental
     contactos.append([idUsuario, nombre, telefono])
-    TreeAgenda.insert('','end', values=(idUsuario, nombre, telefono))
+    TreeAgenda.insert('', 'end', values=(idUsuario, nombre, telefono))
 
 
 ## Boton
@@ -51,6 +59,4 @@ botonAñadir.pack(pady=10)
 TreeAgenda.pack(fill="both", expand=True, padx=10, pady=10)
 
 
-ventana.mainloop(
-    
-)
+ventana.mainloop()
