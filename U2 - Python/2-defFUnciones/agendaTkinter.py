@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import ttk
 
 ventana = tk.Tk()
-ventana.geometry("600x400")
+ventana.geometry("1000x800")
 ventana.title("Agenda")
 
 # etiqueta = tk.Label(ventana, text="Agenda de contactos")
@@ -15,18 +15,26 @@ input_Telefono = tk.Entry(ventana)
 
 ##Tree View (vista de tablas)
 TreeAgenda = ttk.Treeview(ventana, columns=('ID', 'Nombre', 'Telefono'), show='headings')
+
 TreeAgenda.heading('ID', text='ID')
 TreeAgenda.heading('Nombre', text='Nombre')
 TreeAgenda.heading('Telefono', text='Telefono')
 
+# Columnas: ancho y alineación del contenido
+TreeAgenda.column('ID', width=60, anchor='center', stretch=False)     # no estira
+TreeAgenda.column('Nombre', width=220, anchor='w', stretch=True)      # estira
+TreeAgenda.column('Telefono', width=140, anchor='center', stretch=False)
+
 ## Funcion de añadir contacto
 contactos = []
 def añadirContacto():
+    
     nombre = input_Nombre.get()
     telefono = input_Telefono.get()
     idUsuario = len(contactos)+1 #autoincremental
     contactos.append([idUsuario, nombre, telefono])
-    print(contactos)
+    TreeAgenda.insert('','end', values=(idUsuario, nombre, telefono))
+
 
 ## Boton
 botonAñadir = tk.Button(ventana, text="Añadir", command=añadirContacto)
@@ -40,7 +48,7 @@ input_Telefono.pack(pady=10)
 
 botonAñadir.pack(pady=10)
 
-TreeAgenda.pack()
+TreeAgenda.pack(fill="both", expand=True, padx=10, pady=10)
 
 
 ventana.mainloop(
