@@ -93,16 +93,43 @@ def borrarContacto():
     messagebox.showinfo("Contacto borrado", "El contacto ha sido borrado exitosamente.")
     
 def editarContacto():
-    pass
+    seleccionado = TreeAgenda.selection()
+    
+    if not seleccionado:
+        messagebox.showwarning("Selección vacía", "Debes seleccionar un contacto para editar.")
+        return
+
+    for item in seleccionado:
+        valores = TreeAgenda.item(item)['values'] 
+        id_editar = int(valores[0])
+        nuevo_nombre = input_Nombre.get()
+        nuevo_telefono = input_Telefono.get()
+
+        if not (nuevo_nombre and nuevo_telefono):
+            messagebox.showwarning("Campos Vacíos", "Debes completar todos los campos para editar!")
+            return
+        if len(nuevo_telefono) != 10:
+            messagebox.showerror("Cantidad de dígitos", "El Nº debe tener 10 dígitos")
+            return
+
+        # Actualizar en el modelo
+        for c in contactos:
+            if c[0] == id_editar:
+                c[1] = nuevo_nombre
+                c[2] = nuevo_telefono
+                break
+
+        # Actualizar en la vista
+        TreeAgenda.item(item, values=(id_editar, nuevo_nombre, nuevo_telefono))
+
+    messagebox.showinfo("Contacto editado!", "El contacto ha sido editado exitosamente.")
 
 ## Boton
-botonAñadir = tk.Button(ventana, text="Añadir", command=añadirContacto)
-## Borrar
-botonBorrar = tk.Button(ventana, text="Borrar", command=borrarContacto)
-# Botón para limpiar la vista del Treeview
-botonEditar = tk.Button(ventana, text="Editar", command=editarContacto)
-# Botón para limpiar la vista del Treeview
-botonLimpiar = tk.Button(ventana, text="Limpiar", command=clear_treeview)
+botonFrame = tk.Frame(ventana)
+botonAñadir = tk.Button(botonFrame, text="Añadir", command=añadirContacto)
+botonBorrar = tk.Button(botonFrame, text="Borrar", command=borrarContacto)
+botonLimpiar = tk.Button(botonFrame, text="Limpiar", command=clear_treeview)
+botonEditar = tk.Button(botonFrame, text="Editar", command=editarContacto)
 
 ## Con los .pack() los 'metemos dentro' de las ventanas
 nombreLabel.pack()
@@ -111,9 +138,11 @@ input_Nombre.pack(pady=10)
 telefLabel.pack()
 input_Telefono.pack(pady=10) 
 
-botonAñadir.pack(pady=10)
-botonBorrar.pack(pady=10)
-botonLimpiar.pack(pady=10)
+botonFrame.pack(pady=10)
+botonAñadir.pack(side=tk.LEFT, padx=5)
+botonBorrar.pack(side=tk.LEFT, padx=5)
+botonLimpiar.pack(side=tk.LEFT, padx=5)
+botonEditar.pack(side=tk.LEFT, padx=5)
 
 TreeAgenda.pack(fill="both", expand=True, padx=10, pady=10)
 
