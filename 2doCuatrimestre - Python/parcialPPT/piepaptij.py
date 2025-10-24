@@ -1,3 +1,6 @@
+## Para ejecutar este codigo en la notebook hay que activar el venv dentro de /2doCuatrimestre:
+# source .venv/bin/activate
+
 import numpy as np
 import tkinter as tk
 from tkinter import ttk, messagebox
