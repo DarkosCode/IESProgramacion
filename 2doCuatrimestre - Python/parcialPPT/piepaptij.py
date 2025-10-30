@@ -11,7 +11,7 @@ class JuegoPiedraPapelTijera:
         # Configuración de la ventana principal
         self.root = tk.Tk()
         self.root.title("Piedra, Papel, Tijera")
-        self.root.geometry("600x500")
+        self.root.geometry("800x600")
         self.root.configure(bg="#f0f0f0")
         self.root.resizable(False, False)
         
@@ -89,60 +89,14 @@ class JuegoPiedraPapelTijera:
             text="",
             font=("Arial", 16, "bold"),
             bg='#f0f0f0',
-            fg='#27ae60'
+            fg='#27ae60',
+            wraplength=400  # Ajuste para que el texto largo no se salga
         )
         self.resultado_label.pack()
         
-        # Frame para los botones
-        botones_frame = tk.Frame(self.root, bg='#f0f0f0')
-        botones_frame.pack(pady=30)
-        
-        # Botones de elección
-        self.boton_piedra = tk.Button(
-            botones_frame,
-            text="Piedra",
-            font=("Arial", 14, "bold"),
-            bg='#95a5a6',
-            fg='white',
-            width=12,
-            height=2,
-            command=lambda: self.jugar("piedra"),
-            relief='raised',
-            bd=3
-        )
-        self.boton_piedra.pack(side=tk.LEFT, padx=10)
-        
-        self.boton_papel = tk.Button(
-            botones_frame,
-            text="Papel",
-            font=("Arial", 14, "bold"),
-            bg='#3498db',
-            fg='white',
-            width=12,
-            height=2,
-            command=lambda: self.jugar("papel"),
-            relief='raised',
-            bd=3
-        )
-        self.boton_papel.pack(side=tk.LEFT, padx=10)
-        
-        self.boton_tijera = tk.Button(
-            botones_frame,
-            text="Tijera",
-            font=("Arial", 14, "bold"),
-            bg='#e74c3c',
-            fg='white',
-            width=12,
-            height=2,
-            command=lambda: self.jugar("tijera"),
-            relief='raised',
-            bd=3
-        )
-        self.boton_tijera.pack(side=tk.LEFT, padx=10)
-        
-        # Botón de reinicio
+        # Botón de reinicio AHORA dentro del frame de resultado
         self.boton_reinicio = tk.Button(
-            self.root,
+            resultado_frame,
             text="Reiniciar Juego",
             font=("Arial", 12, "bold"),
             bg='#f39c12',
@@ -153,7 +107,55 @@ class JuegoPiedraPapelTijera:
             relief='raised',
             bd=3
         )
-        self.boton_reinicio.pack(pady=20)
+        self.boton_reinicio.pack(pady=10)
+        
+        # Frame para los botones
+        botones_frame = tk.Frame(self.root, bg='#f0f0f0')
+        botones_frame.pack(pady=30)
+        
+        # Botones de elección ahora usando grid
+        self.boton_piedra = tk.Button(
+            botones_frame,
+            text="Piedra",
+            font=("Arial", 16, "bold"),
+            bg='#95a5a6',
+            fg='white',
+            width=14,
+            height=3,
+            command=lambda: self.jugar("piedra"),
+            relief='raised',
+            bd=3
+        )
+        self.boton_piedra.grid(row=0, column=0, padx=20)
+
+        self.boton_papel = tk.Button(
+            botones_frame,
+            text="Papel",
+            font=("Arial", 16, "bold"),
+            bg='#3498db',
+            fg='white',
+            width=14,
+            height=3,
+            command=lambda: self.jugar("papel"),
+            relief='raised',
+            bd=3
+        )
+        self.boton_papel.grid(row=0, column=1, padx=20)
+
+        self.boton_tijera = tk.Button(
+            botones_frame,
+            text="Tijera",
+            font=("Arial", 16, "bold"),
+            bg='#e74c3c',
+            fg='white',
+            width=14,
+            height=3,
+            command=lambda: self.jugar("tijera"),
+            relief='raised',
+            bd=3
+        )
+        self.boton_tijera.grid(row=0, column=2, padx=20)
+        
         
     def jugar(self, eleccion_usuario):
         # Generar elección aleatoria de la máquina
@@ -207,7 +209,7 @@ class JuegoPiedraPapelTijera:
             messagebox.showinfo("¡Perdiste!", mensaje)
         
         self.resultado_label.config(
-            text="¡Juego terminado! Presiona 'Reiniciar' para jugar de nuevo",
+            text="¡Juego terminado! Presiona 'Reiniciar Juego' para jugar de nuevo",
             fg='#8e44ad'
         )
     
