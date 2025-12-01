@@ -138,7 +138,7 @@ class InterfazBatallaNaval:
     """
     def __init__(self, root):
         self.root = root
-        self.root.title("Batalla Naval - Python POO")
+        self.root.title("Batalla Naval")
         
         # Instancia de la lógica del juego
         self.juego = JuegoBatallaNaval()
@@ -220,7 +220,7 @@ class InterfazBatallaNaval:
             self.etiqueta_estado.config(text="¡Tocado!", fg="orange")
             
         elif resultado == "HUNDIDO":
-            boton.config(bg=self.color_hundido, text="X", state="disabled")
+            boton.config(state="disabled")
             self.etiqueta_estado.config(text=f"¡BARCO HUNDIDO! (Tamaño {barco.tamano})", fg="red")
             # Opcional: Si quisiéramos pintar todo el barco de rojo oscuro al hundirse,
             # tendríamos que buscar en el tablero dónde está ese barco y actualizar esos botones.
