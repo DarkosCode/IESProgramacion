@@ -28,8 +28,8 @@ class JuegoBatallaNaval:
     Maneja el 'tablero', la colocación de barcos y la lógica de disparos.
     """
     def __init__(self):
-        # Tablero 10x10 inicializado con None (vacío)
-        # Se usará None para agua no descubierta, y objetos Barco para casillas con barco
+        # Tablero 10x10 inicializaco aleatoriamente
+        # Se usa None para agua donde no se disparo en vez de Null ya que no existe en Python, y objetos Barco para casillas con barco
         self.filas = 10
         self.columnas = 10
         self.tablero = []
@@ -50,6 +50,8 @@ class JuegoBatallaNaval:
         
         self.flota = []
         # lista de los barcos a colocar/colocados, util para saber cuadno se hundieron todos
+        self.puntaje = 0
+        # self.fallos = 0
         self.colocar_barcos_aleatorios()
 
     def colocar_barcos_aleatorios(self):
@@ -57,7 +59,7 @@ class JuegoBatallaNaval:
         Coloca la flota de barcos en posiciones aleatorias horizontales.
         Flota: 4 de tamaño 1, 3 de tamaño 2, 2 de tamaño 3.
         """
-        barcos_a_colocar = [1]*4 + [2]*3 + [3]*2
+        barcos_a_colocar = [1]*5 + [2]*3 + [3]*2
         
         for tamano in barcos_a_colocar:
             colocado = False
@@ -79,7 +81,10 @@ class JuegoBatallaNaval:
                     colocado = True
 
     def juego_terminado(self):
-        """Devuelve True si todos los barcos han sido hundidos."""
+        """Devuelve True si todos los barcos han sido hundidos O si se fallaron mas de 5 tiros."""
+        # if self.fallos > 5:
+        #     return True
+            
         for barco in self.flota:
             if not barco.esta_hundido():
                 return False
@@ -98,6 +103,7 @@ class JuegoBatallaNaval:
             ## Si es None significa que hay agua, osea que si entra el barco
         return True
 
+    disparosFallidos = 0
     def disparar(self, fila, col):
         """
         Procesa un disparo en la coordenada (fila, col).
@@ -110,6 +116,8 @@ class JuegoBatallaNaval:
         if contenido is None:
             # Si en la posicion contenido hay agua (None)...
             self.disparos[fila][col] = "AGUA"
+            # self.fallos += 1
+            # disparosFallidos += 1
             return "AGUA", None
         
         # Si hay un barco (contenido es un objeto Barco)
@@ -122,6 +130,12 @@ class JuegoBatallaNaval:
         
         if barco.esta_hundido():
             # Actualizar estado de disparos para todas las celdas de este barco a "HUNDIDO"
+            if barco.tamano == 1:
+                self.puntaje += 10
+            elif barco.tamano == 2:
+                self.puntaje += 20
+            elif barco.tamano == 3:
+                self.puntaje += 30
             return "HUNDIDO", barco
         else:
             return "TOCADO", None
@@ -163,7 +177,17 @@ class InterfazBatallaNaval:
             font=("Arial", 12, "bold"),
             pady=10
         )
-        self.etiqueta_estado.grid(row=0, column=0, columnspan=11)
+        self.etiqueta_estado.grid(row=0, column=0, columnspan=8)
+
+        # Etiqueta de Puntaje
+        self.etiqueta_puntaje = tk.Label(
+            main_frame,
+            text="Puntaje: 0",
+            font=("Arial", 12, "bold"),
+            fg="blue",
+            pady=10
+        )
+        self.etiqueta_puntaje.grid(row=0, column=8, columnspan=3)
 
         # Encabezados de Columnas (1-10)
         for c in range(10):
@@ -217,16 +241,23 @@ class InterfazBatallaNaval:
             
         elif resultado == "HUNDIDO":
             boton.config(state="disabled")
-            self.etiqueta_estado.config(text=f"¡BARCO HUNDIDO! (Tamaño {barco.tamano})", fg="red")
-            # Opcional: Si quisiéramos pintar todo el barco de rojo oscuro al hundirse,
-            # tendríamos que buscar en el tablero dónde está ese barco y actualizar esos botones.
-            # Por simplicidad del requerimiento, marcamos el último golpe.
-            # Pero para mejor UX, vamos a recorrer el tablero y actualizar todos los botones de ese barco.
-            self.resaltar_barco_hundido(barco)
+            # Proteger contra analizadores estáticos o rutas inesperadas que puedan pasar None
+            if barco is not None:
+                self.etiqueta_estado.config(text=f"¡BARCO HUNDIDO! (Tamaño {barco.tamano})", fg="red")
+                self.etiqueta_puntaje.config(text=f"Puntaje: {self.juego.puntaje}")
+                self.resaltar_barco_hundido(barco)
+            else:
+                # Mensaje genérico si por alguna razón no se dispone del objeto barco
+                self.etiqueta_estado.config(text="¡BARCO HUNDIDO!", fg="red")
 
             if self.juego.juego_terminado():
-                messagebox.showinfo("Fin del Juego", "Juego finalizado! Se han hundido todos los barcos")
+                messagebox.showinfo("Fin del Juego", f"Juego finalizado! Se han hundido todos los barcos.\nPuntaje Final: {self.juego.puntaje}")
                 self.deshabilitar_tablero()
+        
+        # Verificar si se perdio por fallar mas de 5 disapros
+        # if self.juego.fallos > 5:
+        #      messagebox.showinfo("GAME OVER", f"Has perdido. Excediste el límite de 5 disparos.\nPuntaje Final: {self.juego.puntaje}")
+        #      self.deshabilitar_tablero()
 
     def resaltar_barco_hundido(self, barco):
         """
