@@ -2,9 +2,8 @@ import tkinter as tk
 from tkinter import messagebox
 import random
 
-# -----------------------------------------------------------------------------
-# LÓGICA DEL JUEGO (BACKEND)
-# -----------------------------------------------------------------------------
+
+# PARTE LÓGICA DEL JUEGO (BACKEND)
 
 class Barco:
     """
@@ -26,7 +25,7 @@ class Barco:
 class JuegoBatallaNaval:
     """
     Clase principal de la lógica del juego.
-    Maneja el tablero, la colocación de barcos y la lógica de disparos.
+    Maneja el 'tablero', la colocación de barcos y la lógica de disparos.
     """
     def __init__(self):
         # Tablero 10x10 inicializado con None (vacío)
@@ -67,7 +66,6 @@ class JuegoBatallaNaval:
                 fila = random.randint(0, self.filas - 1)
                 # Asegurar que cabe horizontalmente (columna + tamaño <= 10)
                 col_max = self.columnas - tamano
-                if col_max < 0: continue # Por seguridad, aunque con tamano <= 3 siempre cabe
                 
                 col = random.randint(0, col_max)
                 
@@ -128,13 +126,11 @@ class JuegoBatallaNaval:
         else:
             return "TOCADO", None
 
-# -----------------------------------------------------------------------------
-# INTERFAZ GRÁFICA (FRONTEND)
-# -----------------------------------------------------------------------------
+# PARTE GRÁFICA
 
 class InterfazBatallaNaval:
     """
-    Maneja la ventana, botones y eventos del usuario usando tkinter.
+    ventanas, botones y eventos del usuario usando tkinter.
     """
     def __init__(self, root):
         self.root = root
