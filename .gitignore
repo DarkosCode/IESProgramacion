@@ -4,3 +4,7 @@ venv/
 *.pyc
 .ipynb_checkpoints/
 .env
+*.png
+*.jpg
+*.jpeg
+*.pdf
