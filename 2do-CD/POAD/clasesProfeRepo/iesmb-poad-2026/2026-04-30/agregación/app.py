@@ -3,6 +3,7 @@ from vehiculo import Vehiculo
 
 def main():
     p: Persona = Persona("fulano", 22, 60)
+    #! El p : Persona es un mensaje para el programador y para el IDE, no para Python.
     p.presentarse()
     p.agregar_vehiculo(Vehiculo("ab 123 cd"))
     p.presentarse()
