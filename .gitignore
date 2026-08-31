@@ -8,3 +8,6 @@ venv/
 *.jpg
 *.jpeg
 *.pdf
+
+# dataset pesado, no se sube al repo (>50MB)
+2do-CD/PP2/2doCuatri/8.wine_reviews.csv
